@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
 	}
 	else
 	{
-		$sql = "INSERT INTO vote ('Question', 'Count_num', 'Quest_Desc') VALUES ('.$q_name.','.$count_code.', '.$desc.')";
+	$sql = 'INSERT INTO vote ("Question", "Count_num", "Quest_Desc") VALUES ('$q_name','$count_code', '$desc')';
 	$insert_result = pg_query($sql) or die('Query failed: ' . pg_last_error());	
 		if ($insert_result)
 		{	
