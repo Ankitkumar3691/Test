@@ -4,7 +4,7 @@ include('session.php');
 if(isset($_POST['submit'])){
 	
 	$q_name= pg_escape_string($_POST['question_name']);
-	$count_code= pg_escape_string($_POST['count_num']);	
+	$count_code= pg_escape_string($_POST['count_number']);	
 	$desc= pg_escape_string($_POST['que_desc']);
 	
 	include 'config.php';	
@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
 	}
 	else
 	{
-	$sql = "INSERT INTO vote ('Question', 'Count_num', 'Quest_Desc') VALUES ('$q_name', '$count_code', '$desc')";
+		$sql = "INSERT INTO vote ('Question', 'Count_num', 'Quest_Desc') VALUES ('.$q_name.','.$count_code.', '.$desc.')";
 	$insert_result = pg_query($sql) or die('Query failed: ' . pg_last_error());	
 		if ($insert_result)
 		{	
@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
 	<div class="code_create">
 		<form action="" method="POST">
 			<input id="d_name" name="question_name" type="text" placeholder="Question" required >
-			<input id="ref_code" name="count_num" type="text" placeholder="Counts" required>
+			<input id="ref_code" name="count_number" type="text" placeholder="Counts" required>
 			<input id="sal_rep" name="que_desc" type="text" placeholder="Question Desc" required>
 			<input name="submit" type="submit" value="Create" id="create">
 			<span><?php echo $error; ?></span>
